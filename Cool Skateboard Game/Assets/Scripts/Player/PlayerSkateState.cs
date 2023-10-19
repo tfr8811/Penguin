@@ -10,12 +10,15 @@ public class PlayerSkateState : PlayerBaseState
     }
     public override void UpdateState(PlayerStateManager player)
     {
-        if (Input.GetButtonDown("aButton")) //if the plyer presses a...
+        if (Input.GetButtonDown("aButton")) //if the player presses a...
         {
-            if (player.rb.velocity.x >= 0 && player.skateSubState == "none") //...and the player has not started a skate sequence...
+            if (player.skateSubState == "none" ) //...and the player has not started a skate sequence...
             {
-                player.skateSubState = "start"; //...then they want to start a skate sequence
-                Debug.Log("Skate is: " + player.skateSubState);
+                if (player.rb.velocity.x >= 0)
+                {
+                    player.skateSubState = "start"; //...then they want to start a skate sequence
+                    Debug.Log("Skate is: " + player.skateSubState);
+                }
             } else if (player.skateSubState == "mid" && player.rb.velocity.x <= 0) //but if the player has already started skating, and they are midway through skating...
             {
                 player.rb.velocity = new Vector2(player.skateSpeedMultiplier * -player.runSpeed, player.rb.velocity.y); //then the player goes left
@@ -23,12 +26,15 @@ public class PlayerSkateState : PlayerBaseState
                 Debug.Log("Skate is: " + player.skateSubState);
             }
         }
-        if (Input.GetButtonDown("dButton")) //if the plyer presses d...
+        if (Input.GetButtonDown("dButton")) //if the player presses d...
         {
-            if (player.rb.velocity.x <= 0 && player.skateSubState == "none") //...and the player has not started a skate sequence...
+            if (player.skateSubState == "none") //...and the player has not started a skate sequence...
             {
-                player.skateSubState = "start"; //...then they want to start a skate sequence
-                Debug.Log("Skate is: " + player.skateSubState);
+                if (player.rb.velocity.x <= 0)
+                {
+                    player.skateSubState = "start"; //...then they want to start a skate sequence
+                    Debug.Log("Skate is: " + player.skateSubState);
+                }
             } else if (player.skateSubState == "mid" && player.rb.velocity.x >= 0){  //but if the player has already started skating, and they are midway through skating...
                 player.rb.velocity = new Vector2(player.skateSpeedMultiplier * player.runSpeed, player.rb.velocity.y); //then the player goes left
                 player.skateSubState = "none"; //and then the player goes back to not having started a skate sequence
