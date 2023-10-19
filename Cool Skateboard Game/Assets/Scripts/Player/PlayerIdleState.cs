@@ -22,6 +22,12 @@ public class PlayerIdleState : PlayerBaseState
         {
             player.switchState(player.jumpState);
         }
+        
+        // Get on skateboard
+        if (Input.GetButtonDown("getOnSkate"))
+        {
+            player.switchState(player.skateState);
+        }
     }
     public override void OnCollisionEnter(PlayerStateManager player, Collision collision)
     {

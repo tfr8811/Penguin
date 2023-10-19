@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerWalkState : PlayerBaseState
 {
+    
     public override void EnterState(PlayerStateManager player)
     {
         player.spriteRenderer.color = new Color(0, 0, 255);
@@ -36,6 +37,11 @@ public class PlayerWalkState : PlayerBaseState
         if (Input.GetButtonDown("Jump"))
         {
             player.switchState(player.jumpState);
+        }
+        // Get on skateboard
+        if (Input.GetButtonDown("getOnSkate"))
+        {
+            player.switchState(player.skateState);
         }
     }
     public override void OnCollisionEnter(PlayerStateManager player, Collision collision)

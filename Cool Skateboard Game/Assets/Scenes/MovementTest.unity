@@ -297,11 +297,13 @@ MonoBehaviour:
   jumpForce: 14
   runSpeed: 8
   airSpeed: 1
+  skateSpeedMultiplier: 1
   rb: {fileID: 254943184}
   defaultGravity: 3
   fallGravityScale: 1.5
   maxFallSpeed: 10
   isGrounded: 0
+  skateSubState: none
   shoeBox: {fileID: 1814050718}
   boxCollider: {fileID: 254943185}
   spriteRenderer: {fileID: 254943186}

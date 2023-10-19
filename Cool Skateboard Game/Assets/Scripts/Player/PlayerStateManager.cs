@@ -23,11 +23,13 @@ public class PlayerStateManager : MonoBehaviour
     public float jumpForce;
     public float runSpeed;
     public float airSpeed;
+    public float skateSpeedMultiplier;
     public Rigidbody2D rb;
     public float defaultGravity;
     public float fallGravityScale;
     public float maxFallSpeed;
     public int isGrounded;
+    public string skateSubState;
     public GameObject shoeBox;
     public BoxCollider2D boxCollider;
     public SpriteRenderer spriteRenderer;
