@@ -25,6 +25,10 @@ public class PlayerSkateState : PlayerBaseState
                 player.rb.velocity = new Vector2(player.skateSpeedMultiplier * -player.runSpeed, player.rb.velocity.y); //then the player goes left
                 player.skateSubState = "none"; //and then the player goes back to not having started a skate sequence
                 Debug.Log("Skate is: " + player.skateSubState);
+            } else if (player.skateSubState == "startLeft")
+            {
+                //you fucked up
+                player.skateSubState = "none";
             }
         }
         if (Input.GetButtonDown("dButton")) //if the player presses d...
@@ -41,6 +45,10 @@ public class PlayerSkateState : PlayerBaseState
                 player.rb.velocity = new Vector2(player.skateSpeedMultiplier * player.runSpeed, player.rb.velocity.y); //then the player goes left
                 player.skateSubState = "none"; //and then the player goes back to not having started a skate sequence
                 Debug.Log("Skate is: " + player.skateSubState);
+            } else if (player.skateSubState == "startRight")
+            {
+                //you fucked up
+                player.skateSubState = "none";
             }
         } 
         if (Input.GetButtonDown("sButton"))
