@@ -12,6 +12,7 @@ public class PlayerSkateState : PlayerBaseState
     {
         if (Input.GetButtonDown("aButton")) //if the player presses a...
         {
+            Debug.Log("I pressed A!");
             if (player.skateSubState == "none" ) //...and the player has not started a skate sequence...
             {
                 if (player.rb.velocity.x >= 0)
@@ -28,6 +29,7 @@ public class PlayerSkateState : PlayerBaseState
         }
         if (Input.GetButtonDown("dButton")) //if the player presses d...
         {
+            Debug.Log("I pressed D!");
             if (player.skateSubState == "none") //...and the player has not started a skate sequence...
             {
                 if (player.rb.velocity.x <= 0)
@@ -43,6 +45,7 @@ public class PlayerSkateState : PlayerBaseState
         } 
         if (Input.GetButtonDown("sButton"))
         {
+            Debug.Log("I pressed S!");
             if(player.skateSubState == "startRight") // if the player presses s, and they have already started a skate sequence going to the right...
             {
                 player.skateSubState = "midRight"; //..,then they progress their skate sequence to mid right...
