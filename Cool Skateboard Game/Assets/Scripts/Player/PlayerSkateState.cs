@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class PlayerSkateState : PlayerBaseState
 {
+    // the amount of frames s has been held down (for leaving skateboard)
+    private float sHeld;
     public override void EnterState(PlayerStateManager player)
     {
-
+        player.spriteRenderer.color = new Color(1, 0.5f, 0);
+        sHeld = 0;
     }
     public override void UpdateState(PlayerStateManager player)
     {
@@ -64,7 +67,17 @@ public class PlayerSkateState : PlayerBaseState
             }
         }
 
-        
+        // Get off skateboard
+        if (Input.GetButton("getOnSkate"))
+        {
+            sHeld += Time.deltaTime;
+        } else {
+            sHeld = 0;
+        }
+
+        if (sHeld > 1) {
+            player.switchState(player.idleState);
+        }
 
         /*Vector2 stickDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         if (stickDir.x > 0.1 && player.rb.velocity.x >= 0)
